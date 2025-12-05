@@ -12,7 +12,8 @@ import UserContextProvider, { userContext } from './context/userContext'
 import ProductedRoutes from './component/ProductedRoutes/ProductedRoutes'
 import ProductDetails from './component/ProductDetails/ProductDetails'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import CartContextProvider from './context/cartContext'
+import { Toaster } from 'react-hot-toast'
 
 let routers = createBrowserRouter([
   {path:'' , element:<Layout/> , children:[
@@ -30,9 +31,12 @@ function App() {
 
   return (
     <>
+    <CartContextProvider>
     <UserContextProvider>
     <RouterProvider router = {routers}></RouterProvider>
+    <Toaster/>
     </UserContextProvider>
+    </CartContextProvider>
     </>
   )
 }

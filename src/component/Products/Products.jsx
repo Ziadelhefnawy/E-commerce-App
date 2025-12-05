@@ -2,9 +2,25 @@ import React, { useContext , useState , useEffect} from 'react'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom'
+import {cartContext} from '../../context/cartContext'
+import toast from "react-hot-toast"
 function Products() {
+    let {addProductToCart} = useContext(cartContext); 
     const [product, setProduct] = useState([])
     const [isLoading, setLoading] = useState(true)
+    async function addProductItem(id){
+    let response = await addProductToCart(id)
+    console.log('response',response);   
+    if(response.data.status=='success'){
+            toast.success(response.data.message)
+          }
+          else{
+            toast.error(response.data.message)
+          }
+    
+
+  }
+
 function getProducts(){
     axios.get('https://ecommerce.routemisr.com/api/v1/products')
     .then( (response)=>{console.log("response" , response.data.data)
@@ -46,11 +62,11 @@ return (
               
             </div>
             </Link>
-            <button className='btn bg-secondary text-white p-2 m-2 w-100'>Add To Cart</button>
+            <button onClick= {()=>{addProductItem(productInfo.id)}} className='btn bg-secondary text-white p-2 m-2 w-100'>Add To Cart</button>
             </div>
             </>
           ) 
-         
+        
         } )}
 
       </div>
