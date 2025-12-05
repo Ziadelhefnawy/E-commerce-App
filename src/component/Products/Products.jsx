@@ -4,6 +4,7 @@ import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom'
 import {cartContext} from '../../context/cartContext'
 import toast from "react-hot-toast"
+import CategorySlider from "../CategorySlider/CategorySlider"
 function Products() {
     let {addProductToCart} = useContext(cartContext); 
     const [product, setProduct] = useState([])
@@ -42,6 +43,14 @@ useEffect( ()=>{
 
 
 return (
+  <div className="px-4"> 
+      {/* Slider above products */}
+      <CategorySlider />
+
+      <h2 className="text-secondary py-4">All Products</h2>
+
+
+  
 <div className="container">
     {
         !isLoading?
@@ -75,8 +84,7 @@ return (
     }
     </div>
 
-
-
+</div>
 )
 }
 

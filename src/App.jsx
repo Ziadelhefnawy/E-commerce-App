@@ -14,6 +14,10 @@ import ProductDetails from './component/ProductDetails/ProductDetails'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartContextProvider from './context/cartContext'
 import { Toaster } from 'react-hot-toast'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 let routers = createBrowserRouter([
   {path:'' , element:<Layout/> , children:[

@@ -3,7 +3,7 @@ import { cartContext } from "../../context/cartContext"
 
 export default function Carts() {
     let [product,setProduct] = useState(null)
-    let {getProductToCart} = useContext(cartContext)
+    let {getProductToCart,deleteProductFromCart} = useContext(cartContext)
 
     async function getProduct() {
         let response = await getProductToCart();  
@@ -14,6 +14,13 @@ export default function Carts() {
             console.error("Failed to fetch cart data or response is invalid.");
         }
     }
+    async function deleteProduct(id) {
+    console.log(id)
+    let {data} = await deleteProductFromCart(id); 
+    setProduct(data?.data.products)
+
+}
+
 
     useEffect( ()=>{
         getProduct()
@@ -32,7 +39,7 @@ export default function Carts() {
                             <div>
                                 <p className="mb-0">
                                     <span className="text-muted">Sort by:</span>{" "}
-                                    <a href="#!" className="text-body">
+                                    <a onClick={ ()=>{deleteProduct(item?.product?.id)} }  href="#!" className="text-body">
                                         price <i className="fas fa-angle-down mt-1"></i>
                                     </a>
                                 </p>
