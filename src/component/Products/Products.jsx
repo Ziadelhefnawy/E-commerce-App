@@ -59,7 +59,7 @@ return (
           return(
             <>
             <div className="w-25 px-4 styleProduct">
-              <Link to = {`/productDetails/${productInfo.id}`}>
+              <Link to = {`/productDetails/${productInfo.id}`} className='text-decoration-none'>
             <img src={productInfo.imageCover} className="w-100" alt={productInfo.title} />
             <span className="text-info d-block"> {productInfo.category.name} </span>
             <span className=" d-block"> {productInfo.title.split(' ').slice(0,3).join(' ')} </span>
